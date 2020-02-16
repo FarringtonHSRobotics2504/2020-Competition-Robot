@@ -7,23 +7,27 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.OI;
-import frc.robot.Robot;
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.buttons.Button;
 
 /**
  * An example command.  You can replace me with your own command.
  */
-public class ExampleCommand extends Command {
-  public ExampleCommand() {
-    // Use requires() here to declare subsystem dependencies
+public class shootT extends Command {
+  public shootT() {
+    
     requires(Robot.m_subsystem);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+
+   Timer
+
   }
 
   // Called repeatedly when this Command is scheduled to run

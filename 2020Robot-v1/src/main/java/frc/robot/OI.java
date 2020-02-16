@@ -18,7 +18,7 @@ public class OI {
   //// joystick.
   // You create one by telling it which joystick it's on and which button
   // number it is.
-  Joystick stick = new Joystick(0);
+  public Joystick stick = new Joystick(RobotMap.joyStickPort);
   Button button_1 = new JoystickButton(stick, 1);
   Button button_2 = new JoystickButton(stick, 2);
   Button button_3 = new JoystickButton(stick, 3);
