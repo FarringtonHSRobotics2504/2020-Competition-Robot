@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------*/
-/* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
+/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
@@ -7,32 +7,24 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.buttons.Button;
 
-/**
- * An example command.  You can replace me with your own command.
- */
-public class shootT extends Command {
-  public shootT() {
-    
-    requires(Robot.m_subsystem);
+public class IntakeVeyerPolrCommand extends Command {
+  public IntakeVeyerPolrCommand() {
+    // Use requires() here to declare subsystem dependencies
+    requires(Robot.iVeyerSubsystem);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-
-   Timer
-
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    Robot.iVeyerSubsystem.iVMotor.set(-1.0);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -44,11 +36,13 @@ public class shootT extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.iVeyerSubsystem.iVMotor.stopMotor();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    end();
   }
 }

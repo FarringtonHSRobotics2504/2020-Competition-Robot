@@ -7,10 +7,14 @@
 
 package frc.robot.subsystems;
 
+
 import edu.wpi.first.wpilibj.PWMVictorSPX;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap;
+import frc.robot.commands.DriveManuallyCommand;
+
 
 /**
  * Add your docs here.
@@ -25,15 +29,31 @@ public class DriveSubsytem extends Subsystem {
   public PWMVictorSPX rightAD = new PWMVictorSPX(RobotMap.rightADPort);
   public PWMVictorSPX rightFD = new PWMVictorSPX(RobotMap.rightFDPort);
 
-  public DifferentialDrive lDrive = new DifferentialDrive(leftAD, leftFD);
-
-  public DifferentialDrive rDrive = new DifferentialDrive(rightAD, rightFD);
+  public SpeedControllerGroup lDrive = new SpeedControllerGroup(leftAD, leftFD);
+  public SpeedControllerGroup rDrive = new SpeedControllerGroup(rightAD, rightFD);
 
   public DifferentialDrive drive = new DifferentialDrive(lDrive, rDrive);
+
+  public DriveSubsytem(){
+    //Hmmm.. This is a constructor function the beta wolves uses for thier robot I am not quite 100% sure if we need it or not... 
+    // OH nevermind we dont need it hahahahha
+
+
+  }
+
+  public void manualDrive(double move, double turn){
+
+    if(move > .5) move = 0.5;
+    //Lets robot move at half speed, we can use this if statement and apply it to other things like Conveyer Belt
+
+    drive.arcadeDrive(move, turn);
+    //Instant editing if changes needed in robot thats why its in subsystem and called later
+
+  }
   
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new DriveManuallyCommand());
   }
 }

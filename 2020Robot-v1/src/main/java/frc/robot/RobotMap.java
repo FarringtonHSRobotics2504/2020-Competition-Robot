@@ -6,7 +6,6 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot;
-import edu.wpi.first.wpilibj.PWMVictorSPX;
 
 
 /**
@@ -24,13 +23,23 @@ public class RobotMap {
   // following variables to use with your drivetrain subsystem.
 
   // drivetrain
-  PWMVictorSPX leftFrontDrive = new PWMVictorSPX(1);
-  PWMVictorSPX leftAftDrive = new PWMVictorSPX(2);
-  PWMVictorSPX rightFrontDrive = new PWMVictorSPX(3);
-  PWMVictorSPX rightAftDrive = new PWMVictorSPX(4);
+  public static int leftFDPort = 1;
+  public static int leftADPort = 2;
+  public static int rightFDPort = 3;
+  public static int rightADPort = 4;
 
-  // intake
-  PWMVictorSPX intakeMotor = new PWMVictorSPX(5);
+  //shooter
+  public static int lShooter = 5;
+  public static int rShooter = 6;
+
+  // intake & conveyer (Mechanical team said it's all just one)
+  public static int iTPort = 5;
+
+  //port
+  public static int joyStickPort = 0;
+  public static int joyStickPortTwo = 1;
+
+  
 
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:

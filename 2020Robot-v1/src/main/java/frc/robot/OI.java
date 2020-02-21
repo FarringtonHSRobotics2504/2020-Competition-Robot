@@ -8,6 +8,10 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.Button;
+import frc.robot.commands.IntakeVeyerCommand;
+import frc.robot.commands.IntakeVeyerPolrCommand;
+import frc.robot.commands.ShootCommand;
+
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -19,11 +23,19 @@ public class OI {
   // You create one by telling it which joystick it's on and which button
   // number it is.
   public Joystick stick = new Joystick(RobotMap.joyStickPort);
-  Button button_1 = new JoystickButton(stick, 1);
-  Button button_2 = new JoystickButton(stick, 2);
-  Button button_3 = new JoystickButton(stick, 3);
-  Button button_4 = new JoystickButton(stick, 4);
-  Button button_5 = new JoystickButton(stick, 5);
+  public Joystick stickTwo = new Joystick(RobotMap.joyStickPortTwo);
+  public Button buttonOne = new JoystickButton(stick, 1);
+  public Button buttonTwo = new JoystickButton(stick, 2);
+  public Button buttonThree = new JoystickButton(stick, 3);
+  public Button buttonFour = new JoystickButton(stick, 4);
+  public Button buttonFive = new JoystickButton(stick, 5);
+
+  public Button bFOne = new JoystickButton(stickTwo, 1);
+  public Button bFTwo = new JoystickButton(stickTwo, 2);
+  public Button bFThree = new JoystickButton(stickTwo, 3);
+  public Button bFFour = new JoystickButton(stickTwo, 4);
+
+
 
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to
@@ -44,4 +56,17 @@ public class OI {
   // Start the command when the button is released and let it run the command
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
+  public OI(){
+    buttonOne.whileHeld(new ShootCommand());
+    buttonTwo.whileHeld(new IntakeVeyerCommand());
+    buttonThree.whileHeld(new IntakeVeyerPolrCommand());
+
+    //Second Controller for Shooting and ETC
+    bFOne.whileHeld(new ShootCommand());
+    bFTwo.whileHeld(new IntakeVeyerCommand());
+    bFThree.whileHeld(new IntakeVeyerPolrCommand());
+  
+  }
 }
+
+
