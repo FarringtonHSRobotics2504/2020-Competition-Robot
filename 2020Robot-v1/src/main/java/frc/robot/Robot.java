@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -26,14 +27,16 @@ import frc.robot.subsystems.ShooterSubsystem;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static DriveSubsytem driveSubsytem = new DriveSubsytem();
-  public static ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
-  public static IntakeVeyerSubsystem iVeyerSubsystem = new IntakeVeyerSubsystem();
-  public static DriveSpeedControlSubsytem driveSpeedControlSubsytem = new DriveSpeedControlSubsytem();
-  public static OI m_oi;
+    public static DriveSubsytem driveSubsytem = new DriveSubsytem();
+    public static ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
+    public static IntakeVeyerSubsystem iVeyerSubsystem = new IntakeVeyerSubsystem();
+    public static DriveSpeedControlSubsytem driveSpeedControlSubsytem = new DriveSpeedControlSubsytem();
+    public static OI m_oi;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
+
+  private final Timer m_timer = new Timer();
 
   /**
    * This function is run when the robot is first started up and should be
@@ -88,8 +91,10 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
+    m_timer.reset();
+    m_timer.start();
     m_autonomousCommand = m_chooser.getSelected();
-
+   
     /*
      * String autoSelected = SmartDashboard.getString("Auto Selector",
      * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
