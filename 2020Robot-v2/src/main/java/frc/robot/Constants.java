@@ -16,4 +16,29 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+    
+    //drivetrain PWM #
+    public static int leftFDPort = 1;
+    public static int leftADPort = 2;
+    public static int rightFDPort = 3;
+    public static int rightADPort = 4;
+
+    //shooter PWM #
+    public static int lShooter = 5;
+    public static int rShooter = 6;
+
+    //intake PWM #
+    public static int iTPort = 7;
+
+    //ports 
+    public static int joyStickPort = 0; 
+    public static int joyStickPortTwo = 1;
+
+
+
+
+
+
+
+
 }
